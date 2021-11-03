@@ -14,5 +14,7 @@
     {% else %}
         <h>You answered {{ answer }}. Correct answer was {{ capital }}.</h>
     {% endif %}
+    <br>
+    <button><a href="{% url 'quiz' %} ">Next Question</a></button>
 </body>
 </html>
