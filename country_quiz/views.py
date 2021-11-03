@@ -9,4 +9,4 @@ def quiz(request):
     data = get_country_data_from_external_api()
     form = QuizForm()
 
-    return render(request, 'country_quiz/quiz_question.html')
+    return render(request, 'country_quiz/quiz_question.html', {'form': form})

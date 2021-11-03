@@ -7,5 +7,10 @@
 <body>
     <h>Country Capitals Quiz</h>
 
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
 </body>
 </html>
