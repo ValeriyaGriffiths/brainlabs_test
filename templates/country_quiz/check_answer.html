@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+{% block title %}
     <title>Check Answer</title>
-</head>
-<body>
+{% endblock %}
+
+{% block body %}
     <h1>Country Capitals Quiz</h1>
 
     <h4>What is the capital of {{ country }}?</h4>
@@ -16,5 +14,4 @@
     {% endif %}
     <br>
     <button><a href="{% url 'quiz' %} ">Next Question</a></button>
-</body>
-</html>
+{% endblock %}
