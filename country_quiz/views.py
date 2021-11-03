@@ -10,7 +10,7 @@ def quiz(request):
     if request.method == 'POST':
         form = QuizForm(request.POST)
         if form.is_valid():
-            return render(request, 'country_quiz/check_answer.html', {'answer': form.data['answer'],
+            return render(request, 'country_quiz/check_answer.html', {'answer': form.data['answer'].capitalize(),
                                                                       'capital': request.session['capital'],
                                                                       'country': request.session['country']
                                                                       })
