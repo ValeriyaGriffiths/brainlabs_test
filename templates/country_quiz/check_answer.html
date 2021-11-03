@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Check Answer</title>
+</head>
+<body>
+    <h1>Country Capitals Quiz</h1>
+
+    <h4>What is the capital of {{ country }}?</h4>
+
+    {% if answer == capital %}
+        <h>You answered {{ answer }}, which is correct!</h>
+    {% else %}
+        <h>You answered {{ answer }}. Correct answer was {{ capital }}.</h>
+    {% endif %}
+</body>
+</html>
