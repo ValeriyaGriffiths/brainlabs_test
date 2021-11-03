@@ -7,6 +7,8 @@ def quiz(request):
     """Generates quiz question and provides form to submit answer."""
 
     data = get_country_data_from_external_api()
+    country = data[0]['name']
     form = QuizForm()
 
-    return render(request, 'country_quiz/quiz_question.html', {'form': form})
+    return render(request, 'country_quiz/quiz_question.html', {'country': country,
+                                                               'form': form})
