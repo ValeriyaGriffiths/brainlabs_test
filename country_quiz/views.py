@@ -4,7 +4,8 @@ from .services import get_country_data_from_external_api
 
 
 def quiz(request):
-    """Generates quiz question and provides form to submit answer."""
+    """Generates quiz question and provides form to submit answer on GET.
+    Checks form and provided answer on POST."""
 
     if request.method == 'POST':
         form = QuizForm(request.POST)
@@ -14,19 +15,13 @@ def quiz(request):
                                                                       'country': request.session['country']
                                                                       })
         else:
-            form = QuizForm()
-            return render(request, 'country_quiz/quiz_question.html', {'country': request.session['country'],
-                                                                       'form': form,
-                                                                       'form_error': True})
+            form_error = True
     else:
         country_data = get_country_data_from_external_api()
-        country = country_data['name']
-        capital = country_data['capital']
+        request.session['country'] = country_data['name']
+        request.session['capital'] = country_data['capital']
+        form_error = False
 
-        request.session['country'] = country
-        request.session['capital'] = capital
-        form = QuizForm()
-
-    return render(request, 'country_quiz/quiz_question.html', {'country': country,
-                                                               'form': form,
-                                                               'form_error': False})
+    return render(request, 'country_quiz/quiz_question.html', {'country': request.session['country'],
+                                                               'form': QuizForm(),
+                                                               'form_error': form_error})
