@@ -19,7 +19,7 @@ def quiz(request):
                                                                        'form': form,
                                                                        'form_error': True})
     else:
-        country_data = get_country_data_from_external_api() #TODO calls api every time and only takes first.
+        country_data = get_country_data_from_external_api()
         country = country_data['name']
         capital = country_data['capital']
 
