@@ -14,7 +14,10 @@ def quiz(request):
                                                                       'country': request.session['country']
                                                                       })
         else:
-            pass #TODO
+            form = QuizForm()
+            return render(request, 'country_quiz/quiz_question.html', {'country': request.session['country'],
+                                                                       'form': form,
+                                                                       'error': True})
     else:
         data = get_country_data_from_external_api() #TODO calls api every time and only takes first.
         country = data[0]['name']
@@ -25,4 +28,5 @@ def quiz(request):
         form = QuizForm()
 
     return render(request, 'country_quiz/quiz_question.html', {'country': country,
-                                                               'form': form})
+                                                               'form': form,
+                                                                       'error': False})
